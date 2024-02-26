@@ -15,6 +15,10 @@ async function getData() {
   return res.json();
 }
 const page = async () => {
+
+  if(!process.env.FRONTEND_URL){
+    return null
+  }
   interface IBlogData {
     title: string;
     content: string;
