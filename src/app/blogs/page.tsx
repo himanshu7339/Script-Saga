@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 
 async function getData() {
-  const res = await fetch(`${process.env.FRONTEND_URL}/api/blogs`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/blogs`,{
     cache:"no-cache"
   });
 
