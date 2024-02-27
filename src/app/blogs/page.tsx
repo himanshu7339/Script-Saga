@@ -5,7 +5,10 @@ import Loading from "./loading";
 
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/blogs`,{
-    cache:"no-cache"
+    cache:"force-cache",
+    next:{
+      revalidate: 3600
+    }
   });
 
   if (!res.ok) {
@@ -16,7 +19,7 @@ async function getData() {
 }
 const page = async () => {
 
-  if(!process.env.FRONTEND_URL){
+  if(!process.env.NEXT_PUBLIC_FRONTEND_URL){
     return null
   }
   interface IBlogData {
