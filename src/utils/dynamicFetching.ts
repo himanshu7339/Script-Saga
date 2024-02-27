@@ -1,9 +1,11 @@
+import { BASE_URL } from "./constVariable";
+
 export async function getData(blogId: string) {
-  if (!process.env.NEXT_PUBLIC_FRONTEND_URL) {
+  if (!BASE_URL) {
     return null;
   }
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/blogs/${blogId}`,
+    `${BASE_URL}/api/blogs/${blogId}`,
     { cache: "no-store" }
   );
 

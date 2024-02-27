@@ -2,9 +2,10 @@ import BlogCard from "@/components/server/BlogCard";
 import React from "react";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { BASE_URL } from "@/utils/constVariable";
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/blogs`,{
+  const res = await fetch(`${BASE_URL}/api/blogs`,{
     cache:"force-cache",
     next:{
       revalidate: 3600
@@ -19,7 +20,7 @@ async function getData() {
 }
 const page = async () => {
 
-  if(!process.env.NEXT_PUBLIC_FRONTEND_URL){
+  if(!BASE_URL){
     return null
   }
   interface IBlogData {
