@@ -1,1 +1,1 @@
-export const BASE_URL : string = process.env.NEXT_PUBLIC_FRONTEND_URL||""
+export const BASE_URL : string = process.env.FRONTEND_URL||""
