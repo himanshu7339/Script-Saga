@@ -3,12 +3,12 @@ import {
   Card,
   CardHeader,
   CardBody,
-
+  Button,
   Divider,
 
 } from "@nextui-org/react";
 import Link from "next/link";
-import { FaBookOpenReader } from "react-icons/fa6";
+import { FaCode } from "react-icons/fa";
 
 interface IBlogCardProps {
   title: string;
@@ -25,15 +25,17 @@ export default function BlogCard({ title, content, blogId }: IBlogCardProps) {
     <Link href={`/blogs/${blogId}`}>
       <Card className="min-w-[400px]">
         <CardHeader className="flex gap-3">
-        <FaBookOpenReader
+        <FaCode
         className="text-4xl" />
           <div className="flex flex-col">
-            <p className="text-md">{title}</p>
+            <h1 className="text-xl font-semibold">{title}</h1>
           </div>
         </CardHeader>
         <Divider />
         <CardBody>
-        <div dangerouslySetInnerHTML={{ __html: truncatedContent }} />
+        <Button radius="md" size="md" fullWidth ={false} className="w-10 font-semibold">
+       Read Now
+      </Button>   
         </CardBody>
         <Divider />
       

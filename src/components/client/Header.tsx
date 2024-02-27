@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Input } from "@nextui-org/react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,6 +11,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 import Link from "next/link";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -21,7 +23,7 @@ export default function Header() {
     navLinkName: string;
   }
 
-  const navbarItems: INavbarItems[] = [{ to: "/blogs", navLinkName: "Blogs" }];
+  const navbarItems: INavbarItems[] = [{ to: "/", navLinkName: "Home" }];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -31,18 +33,22 @@ export default function Header() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-3xl">ScriptSage</p>
+          <Link href={"/"}>
+            <p className="font-bold lg:text-3xl text-xl ">ScriptSage</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {navbarItems.map((item, index) => (
           <NavbarItem key={index}>
-            <Link color="foreground" href={item.to}>
+            <Link color="foreground font-semibold" href={item.to}>
               {item.navLinkName}
             </Link>
           </NavbarItem>
         ))}
+
+        <ThemeSwitcher />
       </NavbarContent>
       {/* <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
@@ -54,6 +60,7 @@ export default function Header() {
           </Button>
         </NavbarItem>
       </NavbarContent> */}
+
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
@@ -67,7 +74,6 @@ export default function Header() {
               }
               className="w-full"
               href="#"
-              
             >
               {item}
             </Link>
