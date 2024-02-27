@@ -8,9 +8,9 @@ import { BASE_URL } from "@/utils/constVariable";
 
 async function getData() {
   const res = await fetch(`${BASE_URL}/api/blogs`,{
-    cache:"force-cache",
+    cache:"no-cache",
     next:{
-      revalidate: 3600
+      revalidate: 0
     }
   });
 
