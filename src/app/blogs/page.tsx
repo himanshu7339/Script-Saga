@@ -7,7 +7,7 @@ import Loading from "./loading";
 import { BASE_URL } from "@/utils/constVariable";
 
 async function getData() {
-  const res = await fetch(`/api/blogs`,{
+  const res = await fetch(`${BASE_URL}/api/blogs`,{
     cache:"force-cache",
     next:{
       revalidate: 3600
@@ -22,6 +22,9 @@ async function getData() {
 }
 const page = async () => {
 
+  if(!BASE_URL){
+    return null
+  }
   interface IBlogData {
     title: string;
     content: string;
