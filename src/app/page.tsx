@@ -7,12 +7,7 @@ import Loading from "@/components/server/LoadingCard";
 import { BASE_URL } from "@/utils/constVariable";
 
 async function getData() {
-  const res = await fetch(`${BASE_URL}/api/blogs`,{
-    cache:"force-cache",
-    next:{
-      revalidate: 3600
-    }
-  });
+  const res = await fetch(`${BASE_URL}/api/blogs`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
